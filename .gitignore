@@ -1,2 +1,15 @@
+## Foldery kompilacji i pliki binarne
 bin/
 obj/
+[Db]ebug/
+[Rr]elease/
+
+## Pliki i foldery Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Pliki konfiguracji lokalnej
+appsettings.Development.json
