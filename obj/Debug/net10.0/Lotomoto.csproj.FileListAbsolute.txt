@@ -22,7 +22,6 @@
 /Users/marcinrozalski/Lotomoto/obj/Debug/net10.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
 /Users/marcinrozalski/Lotomoto/obj/Debug/net10.0/scopedcss/bundle/Lotomoto.styles.css
 /Users/marcinrozalski/Lotomoto/obj/Debug/net10.0/scopedcss/projectbundle/Lotomoto.bundle.scp.css
-/Users/marcinrozalski/Lotomoto/obj/Debug/net10.0/compressed/0lgfsg4i23-{0}-lugek5hnai-lugek5hnai.gz
 /Users/marcinrozalski/Lotomoto/obj/Debug/net10.0/compressed/kw6fssbutx-{0}-61n19gt1b8-61n19gt1b8.gz
 /Users/marcinrozalski/Lotomoto/obj/Debug/net10.0/compressed/qmxtcoqo6q-{0}-fr7q2aak1r-fr7q2aak1r.gz
 /Users/marcinrozalski/Lotomoto/obj/Debug/net10.0/compressed/pm5igspgk3-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -96,3 +95,5 @@
 /Users/marcinrozalski/Lotomoto/obj/Debug/net10.0/Lotomoto.pdb
 /Users/marcinrozalski/Lotomoto/obj/Debug/net10.0/Lotomoto.genruntimeconfig.cache
 /Users/marcinrozalski/Lotomoto/obj/Debug/net10.0/ref/Lotomoto.dll
+/Users/marcinrozalski/Lotomoto/bin/Debug/net10.0/Data/carlistings.json
+/Users/marcinrozalski/Lotomoto/obj/Debug/net10.0/compressed/0lgfsg4i23-{0}-9eyf8u2zgv-9eyf8u2zgv.gz

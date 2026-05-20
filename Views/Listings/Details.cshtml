@@ -1,0 +1,35 @@
+@model Lotomoto.Models.CarListing
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<section class="listing-details">
+    <div class="mb-4">
+        <a asp-action="Index" class="btn btn-link">← Powrót do ogłoszeń</a>
+    </div>
+
+    <div class="row gy-4">
+        <div class="col-12 col-lg-7">
+            <img src="@Model.ImageUrl" alt="Zdjęcie @Model.Title" class="img-fluid rounded shadow-sm" />
+        </div>
+        <div class="col-12 col-lg-5">
+            <h1 class="display-6 mb-3">@Model.Title</h1>
+            <p class="text-primary display-6 fw-bold mb-3">@Model.Price.ToString("C0", System.Globalization.CultureInfo.GetCultureInfo("pl-PL"))</p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="badge rounded-pill bg-secondary">Rok: @Model.Year</span>
+                <span class="badge rounded-pill bg-secondary">Przebieg: @Model.Mileage km</span>
+                <span class="badge rounded-pill bg-secondary">Typ: @Model.Category</span>
+                <span class="badge rounded-pill bg-secondary">Wersja: @Model.Version</span>
+            </div>
+            <div class="mb-4">
+                <h2 class="h5">Opis</h2>
+                <p class="fs-6 text-muted">@Model.Description</p>
+            </div>
+            <div class="d-flex flex-column gap-2">
+                <a class="btn btn-primary" href="mailto:kontakt@lotomoto.local?subject=Zapytanie%20o%20og%C5%82oszenie%20@Model.Title">Kontakt z ogłoszeniodawcą</a>
+                <a class="btn btn-outline-secondary" asp-action="Index">Wróć do listy</a>
+            </div>
+        </div>
+    </div>
+</section>

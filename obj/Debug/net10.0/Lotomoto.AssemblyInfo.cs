@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Lotomoto")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b0e26a0a10ed3afac4e292c1359dae29921158c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d4c41a4e994cac2f617bfabf1a909551a8c350eb")]
 [assembly: System.Reflection.AssemblyProductAttribute("Lotomoto")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Lotomoto")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

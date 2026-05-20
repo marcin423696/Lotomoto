@@ -1,0 +1,35 @@
+[
+  {
+    "Id": 1,
+    "Title": "Ford Mustang GT",
+    "Price": 129900,
+    "Mileage": 52000,
+    "Year": 2018,
+    "Category": "Coupe",
+    "Version": "GT 5.0 V8",
+    "Description": "Sportowe coupe z mocnym silnikiem V8, skórzaną tapicerką i dynamicznym wyglądem.",
+    "ImageUrl": "https://via.placeholder.com/900x520?text=Ford+Mustang+GT"
+  },
+  {
+    "Id": 2,
+    "Title": "Toyota Corolla Hybrid",
+    "Price": 75900,
+    "Mileage": 24000,
+    "Year": 2021,
+    "Category": "Hatchback",
+    "Version": "1.8 Hybrid Comfort",
+    "Description": "Ekonomiczny kompakt ze sprawdzonym układem hybrydowym, idealny do miasta.",
+    "ImageUrl": "https://via.placeholder.com/900x520?text=Toyota+Corolla+Hybrid"
+  },
+  {
+    "Id": 3,
+    "Title": "BMW X3 xDrive",
+    "Price": 154900,
+    "Mileage": 68000,
+    "Year": 2019,
+    "Category": "SUV",
+    "Version": "xDrive30i",
+    "Description": "Luksusowy SUV z napędem na cztery koła, przestronnym wnętrzem i zaawansowanymi systemami bezpieczeństwa.",
+    "ImageUrl": "https://via.placeholder.com/900x520?text=BMW+X3"
+  }
+]

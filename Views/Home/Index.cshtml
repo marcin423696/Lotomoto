@@ -1,8 +1,72 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Lotomoto";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="home-hero py-5">
+    <div class="container">
+        <div class="row align-items-center gap-4">
+            <div class="col-lg-6">
+                <span class="badge rounded-pill bg-primary mb-3">Lotomoto</span>
+                <h1 class="display-5 fw-bold">Przeglądaj samochody używane elegancko i szybko.</h1>
+                <p class="lead text-muted mb-4">Szybkie filtrowanie ogłoszeń, szczegółowe widoki i prosty panel administracyjny do zarządzania treścią.</p>
+                <div class="d-flex flex-column flex-sm-row gap-2">
+                    <a class="btn btn-primary btn-lg" asp-controller="Listings" asp-action="Index">Zobacz ogłoszenia</a>
+                    <a class="btn btn-outline-secondary btn-lg" asp-controller="Admin" asp-action="Login">Panel admina</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-card p-4 rounded-4 shadow-sm bg-white">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="hero-feature p-3 rounded-4 bg-light">
+                                <h2 class="h5 mb-2">Nowoczesne ogłoszenia</h2>
+                                <p class="mb-0 text-muted">Zdjęcia, dane techniczne i pełne opisy w jednym miejscu.</p>
+                            </div>
+                        </div>
+                        <div class="col-4 text-center">
+                            <div class="hero-small-box rounded-4 p-3">
+                                <strong>3+</strong>
+                                <div class="text-muted">kategorie</div>
+                            </div>
+                        </div>
+                        <div class="col-4 text-center">
+                            <div class="hero-small-box rounded-4 p-3">
+                                <strong>10+</strong>
+                                <div class="text-muted">ogłoszeń</div>
+                            </div>
+                        </div>
+                        <div class="col-4 text-center">
+                            <div class="hero-small-box rounded-4 p-3">
+                                <strong>100%</strong>
+                                <div class="text-muted">responsywność</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<section class="container pb-5">
+    <div class="row gy-4">
+        <div class="col-md-4">
+            <div class="feature-box p-4 rounded-4 shadow-sm h-100">
+                <h3>Intuicyjna nawigacja</h3>
+                <p class="text-muted">Przejrzysty układ strony umożliwia szybkie wyszukiwanie ofert i łatwe filtrowanie.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-box p-4 rounded-4 shadow-sm h-100">
+                <h3>Panel administracyjny</h3>
+                <p class="text-muted">Logowanie i CRUD ogłoszeń pozwalają szybko edytować treści bezpośrednio na stronie.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-box p-4 rounded-4 shadow-sm h-100">
+                <h3>Responsywność</h3>
+                <p class="text-muted">Projekt działa dobrze na desktopie, tablecie i smartfonie dzięki modernemu CSS.</p>
+            </div>
+        </div>
+    </div>
+</section>
