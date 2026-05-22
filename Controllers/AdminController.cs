@@ -1,9 +1,7 @@
-using System.Security.Claims;
 using Lotomoto.Data;
 using Lotomoto.Models;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lotomoto.Controllers;
@@ -12,13 +10,21 @@ public class AdminController : Controller
 {
     private readonly ListingRepository _repository;
     private readonly IWebHostEnvironment _env;
-    private const string AdminEmail = "admin@lotomoto.local";
-    private const string AdminPassword = "Admin123!";
 
-    public AdminController(ListingRepository repository, IWebHostEnvironment env)
+    // Zarządzanie użytkownikami i sesjami przez bazodanowe ASP.NET Core Identity
+    private readonly UserManager<IdentityUser> _userManager;
+    private readonly SignInManager<IdentityUser> _signInManager;
+
+    public AdminController(
+        ListingRepository repository,
+        IWebHostEnvironment env,
+        UserManager<IdentityUser> userManager,
+        SignInManager<IdentityUser> signInManager)
     {
         _repository = repository;
         _env = env;
+        _userManager = userManager;
+        _signInManager = signInManager;
     }
 
     [AllowAnonymous]
@@ -37,30 +43,25 @@ public class AdminController : Controller
             return View(model);
         }
 
-        if (!string.Equals(model.Email, AdminEmail, StringComparison.OrdinalIgnoreCase) || model.Password != AdminPassword)
+        // Identity automatycznie haszuje wpisane hasło i porównuje je z bazą danych SQL
+        var result = await _signInManager.PasswordSignInAsync(
+            model.Email,
+            model.Password,
+            isPersistent: true,
+            lockoutOnFailure: false);
+
+        if (result.Succeeded)
         {
-            ModelState.AddModelError(string.Empty, "Nieprawidłowy e-mail lub hasło.");
-            return View(model);
+            if (!string.IsNullOrWhiteSpace(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
+            {
+                return Redirect(model.ReturnUrl);
+            }
+
+            return RedirectToAction(nameof(Dashboard));
         }
 
-        var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, "Administrator"),
-            new Claim(ClaimTypes.Email, AdminEmail)
-        };
-
-        var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-        var authProperties = new AuthenticationProperties { IsPersistent = true };
-
-        await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-            new ClaimsPrincipal(claimsIdentity), authProperties);
-
-        if (!string.IsNullOrWhiteSpace(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
-        {
-            return Redirect(model.ReturnUrl);
-        }
-
-        return RedirectToAction(nameof(Dashboard));
+        ModelState.AddModelError(string.Empty, "Nieprawidłowy e-mail lub hasło.");
+        return View(model);
     }
 
     [Authorize]
@@ -154,7 +155,8 @@ public class AdminController : Controller
     [Authorize]
     public async Task<IActionResult> Logout()
     {
-        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        // Wylogowanie użytkownika i wyczyszczenie ciasteczka autoryzacyjnego
+        await _signInManager.SignOutAsync();
         return RedirectToAction(nameof(Login));
     }
 

@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -31,13 +34,15 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav">
-                        @if (User?.Identity?.IsAuthenticated == true)
+                        @if (SignInManager.IsSignedIn(User))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Dashboard">Panel admina</a>
+                                <a class="nav-link text-dark align-middle" asp-area="" asp-controller="Admin" asp-action="Dashboard" style="line-height: 2.39;">Panel admina</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Logout">Wyloguj</a>
+                                <form class="form-inline" asp-area="" asp-controller="Admin" asp-action="Logout" method="post">
+                                    <button type="submit" class="nav-link btn btn-link text-dark border-0" style="background: none;">Wyloguj (@User.Identity?.Name)</button>
+                                </form>
                             </li>
                         }
                         else
