@@ -1,2 +1,5 @@
-bin/
-obj/
+
+Data/carlistings.json
+lotomoto.db
+wwwroot/uploads/
+.vs/

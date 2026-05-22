@@ -152,12 +152,13 @@ public class AdminController : Controller
         return RedirectToAction(nameof(Dashboard));
     }
 
+    [HttpPost]
     [Authorize]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Logout()
     {
-        // Wylogowanie użytkownika i wyczyszczenie ciasteczka autoryzacyjnego
         await _signInManager.SignOutAsync();
-        return RedirectToAction(nameof(Login));
+        return RedirectToAction("Index", "Home");
     }
 
     private async Task<string> SaveImageAsync(IFormFile imageFile)
