@@ -1,5 +1,9 @@
-
-Data/carlistings.json
-lotomoto.db
-wwwroot/uploads/
 .vs/
+bin/
+obj/
+*.db
+*.db-shm
+*.db-wal
+Data/carlistings.json
+wwwroot/uploads/*
+!wwwroot/uploads/.gitkeep
