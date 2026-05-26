@@ -17,7 +17,10 @@
             <h1 class="display-6">Przeglądaj ogłoszenia</h1>
             <p class="text-muted">Znajdź samochód dopasowany do Twoich potrzeb: od sportowych coupe po wygodne SUV-y.</p>
         </div>
-        <a class="btn btn-primary btn-lg" asp-controller="Admin" asp-action="Dashboard">Panel admina</a>
+        <div class="d-flex gap-2">
+            <a class="btn btn-success btn-lg" asp-controller="Admin" asp-action="Create">Dodaj ogłoszenie</a>
+            <a class="btn btn-primary btn-lg" asp-controller="Admin" asp-action="Dashboard">Panel admina</a>
+        </div>
     </div>
 </div>
 
@@ -78,8 +81,9 @@ else
                         <p class="text-primary fs-5 fw-semibold mb-2">@item.Price.ToString("C0", System.Globalization.CultureInfo.GetCultureInfo("pl-PL"))</p>
                         <p class="mb-2 text-muted">@item.Year · @item.Mileage km · @item.Category</p>
                         <p class="card-text text-truncate">@item.Description</p>
-                        <div class="mt-auto">
-                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary mt-3">Zobacz szczegóły</a>
+                        <div class="mt-auto d-flex gap-2">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Zobacz szczegóły</a>
+                            <a class="btn btn-sm btn-success" asp-controller="Admin" asp-action="Create">Dodaj ogłoszenie</a>
                         </div>
                     </div>
                 </article>

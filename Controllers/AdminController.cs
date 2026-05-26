@@ -66,14 +66,15 @@ namespace Lotomoto.Controllers
             return View(listings);
         }
 
-        [Authorize]
+        // Pozwalamy anonimowym użytkownikom dodawać ogłoszenia
+        [AllowAnonymous]
         public IActionResult Create()
         {
             return View(new CarListing());
         }
 
         [HttpPost]
-        [Authorize]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CarListing model, IFormFile? imageFile)
         {
@@ -91,7 +92,9 @@ namespace Lotomoto.Controllers
 
             _context.CarListings.Add(model);
             _context.SaveChanges();
-            return RedirectToAction(nameof(Dashboard));
+
+            
+            return RedirectToAction("Index", "Listings");
         }
 
         [Authorize]
