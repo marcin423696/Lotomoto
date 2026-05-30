@@ -15,8 +15,11 @@
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
         <div>
             <h1 class="display-6">Przeglądaj ogłoszenia</h1>
-            <p class="text-muted">Znajdź samochód dopasowany do Twoich potrzeb: od sportowych coupe po wygodne SUV-y.</p>
+            <p class="text-muted">
+                Znajdź samochód dopasowany do Twoich potrzeb: od sportowych coupe po wygodne SUV-y.
+            </p>
         </div>
+
         <div class="d-flex gap-2">
             <a class="btn btn-success btn-lg" asp-controller="Admin" asp-action="Create">Dodaj ogłoszenie</a>
             <a class="btn btn-primary btn-lg" asp-controller="Admin" asp-action="Dashboard">Panel admina</a>
@@ -27,46 +30,59 @@
 <div class="card mb-4 shadow-sm filter-panel">
     <div class="card-body">
         <form method="get" class="row gy-3 gx-3">
+
             <div class="col-12 col-lg-4">
                 <label class="form-label" for="query">Szukaj</label>
                 <input id="query" name="query" class="form-control" value="@query" placeholder="Marka, model, opis..." />
             </div>
+
             <div class="col-6 col-lg-2">
-                <label class="form-label" for="category">Rodzaj</label>
+                <label class="form-label" for="category">Rodzaj pojazdu</label>
                 <select id="category" name="category" class="form-select">
                     <option value="">Wszystkie</option>
+
                     @foreach (var cat in categories)
                     {
-                        <option value="@cat" selected="@(cat == selectedCategory ? "selected" : null)">@cat</option>
+                        <option value="@cat" selected="@(cat == selectedCategory ? "selected" : null)">
+                            @cat
+                        </option>
                     }
                 </select>
             </div>
+
             <div class="col-6 col-lg-2">
                 <label class="form-label" for="minYear">Rok od</label>
                 <input id="minYear" name="minYear" type="number" class="form-control" value="@(minYear?.ToString() ?? string.Empty)" placeholder="2010" />
             </div>
+
             <div class="col-6 col-lg-2">
                 <label class="form-label" for="maxYear">Rok do</label>
                 <input id="maxYear" name="maxYear" type="number" class="form-control" value="@(maxYear?.ToString() ?? string.Empty)" placeholder="2025" />
             </div>
+
             <div class="col-6 col-lg-2">
                 <label class="form-label" for="minPrice">Cena min</label>
                 <input id="minPrice" name="minPrice" type="number" class="form-control" value="@(minPrice?.ToString() ?? string.Empty)" placeholder="0" />
             </div>
+
             <div class="col-6 col-lg-2">
                 <label class="form-label" for="maxPrice">Cena max</label>
                 <input id="maxPrice" name="maxPrice" type="number" class="form-control" value="@(maxPrice?.ToString() ?? string.Empty)" placeholder="200000" />
             </div>
+
             <div class="col-12 col-lg-3 align-self-end">
                 <button type="submit" class="btn btn-outline-primary w-100">Filtruj</button>
             </div>
+
         </form>
     </div>
 </div>
 
 @if (!Model.Any())
 {
-    <div class="alert alert-info">Brak ogłoszeń spełniających kryteria. Spróbuj zmienić filtr.</div>
+    <div class="alert alert-info">
+        Brak ogłoszeń spełniających kryteria. Spróbuj zmienić filtr.
+    </div>
 }
 else
 {
@@ -75,17 +91,35 @@ else
         {
             <div class="col">
                 <article class="card listing-card h-100 shadow-sm">
+
                     <img src="@item.ImageUrl" class="card-img-top" alt="Zdjęcie @item.Title" loading="lazy" />
+
                     <div class="card-body d-flex flex-column">
                         <h2 class="h5 card-title">@item.Title</h2>
-                        <p class="text-primary fs-5 fw-semibold mb-2">@item.Price.ToString("C0", System.Globalization.CultureInfo.GetCultureInfo("pl-PL"))</p>
-                        <p class="mb-2 text-muted">@item.Year · @item.Mileage km · @item.Category</p>
-                        <p class="card-text text-truncate">@item.Description</p>
+
+                        <p class="text-primary fs-5 fw-semibold mb-2">
+                            @item.Price.ToString("C0", System.Globalization.CultureInfo.GetCultureInfo("pl-PL"))
+                        </p>
+
+                        <p class="mb-2 text-muted">
+                            @item.Year · @item.Mileage km · @item.Power KM · @item.Category
+                        </p>
+
+                        <p class="card-text text-truncate">
+                            @item.Description
+                        </p>
+
                         <div class="mt-auto d-flex gap-2">
-                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Zobacz szczegóły</a>
-                            <a class="btn btn-sm btn-success" asp-controller="Admin" asp-action="Create">Dodaj ogłoszenie</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">
+                                Zobacz szczegóły
+                            </a>
+
+                            <a class="btn btn-sm btn-success" asp-controller="Admin" asp-action="Create">
+                                Dodaj ogłoszenie
+                            </a>
                         </div>
                     </div>
+
                 </article>
             </div>
         }

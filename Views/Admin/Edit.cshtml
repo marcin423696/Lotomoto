@@ -7,56 +7,84 @@
 <div class="card shadow-sm">
     <div class="card-body">
         <h1 class="h4 mb-3">Edytuj ogłoszenie</h1>
+
         <form asp-action="Edit" method="post" enctype="multipart/form-data">
             <input type="hidden" asp-for="Id" />
+
             <div class="row g-3">
+
                 <div class="col-md-6">
                     <label asp-for="Title" class="form-label"></label>
                     <input asp-for="Title" class="form-control" />
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
+
                 <div class="col-md-3">
                     <label asp-for="Price" class="form-label"></label>
                     <input asp-for="Price" class="form-control" />
                     <span asp-validation-for="Price" class="text-danger"></span>
                 </div>
+
                 <div class="col-md-3">
                     <label asp-for="Year" class="form-label"></label>
                     <input asp-for="Year" class="form-control" />
                     <span asp-validation-for="Year" class="text-danger"></span>
                 </div>
+
                 <div class="col-md-4">
                     <label asp-for="Mileage" class="form-label"></label>
                     <input asp-for="Mileage" class="form-control" />
                     <span asp-validation-for="Mileage" class="text-danger"></span>
                 </div>
+
                 <div class="col-md-4">
                     <label asp-for="Category" class="form-label"></label>
-                    <input asp-for="Category" class="form-control" />
+                    <select asp-for="Category" class="form-select">
+                        <option value="">-- wybierz rodzaj pojazdu --</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="Kombi">Kombi</option>
+                        <option value="SUV">SUV</option>
+                        <option value="Hatchback">Hatchback</option>
+                        <option value="Coupe">Coupe</option>
+                        <option value="Kabriolet">Kabriolet</option>
+                        <option value="Van">Van</option>
+                        <option value="Pickup">Pickup</option>
+                        <option value="Dostawczy">Dostawczy</option>
+                    </select>
                     <span asp-validation-for="Category" class="text-danger"></span>
                 </div>
+
                 <div class="col-md-4">
-                    <label asp-for="Version" class="form-label"></label>
-                    <input asp-for="Version" class="form-control" />
-                    <span asp-validation-for="Version" class="text-danger"></span>
+                    <label asp-for="Power" class="form-label"></label>
+                    <input asp-for="Power" class="form-control" />
+                    <span asp-validation-for="Power" class="text-danger"></span>
                 </div>
+
                 <div class="col-12">
                     <label asp-for="Description" class="form-label"></label>
                     <textarea asp-for="Description" class="form-control" rows="4"></textarea>
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
+
                 <div class="col-12">
                     <label class="form-label">Aktualne zdjęcie</label>
-                    <div class="mb-3">
-                        <img src="@Model.ImageUrl" alt="@Model.Title" class="img-fluid rounded" />
-                    </div>
+
+                    @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+                    {
+                        <div class="mb-3">
+                            <img src="@Model.ImageUrl" alt="@Model.Title" class="img-fluid rounded" />
+                        </div>
+                    }
+
                     <label class="form-label">Wgraj nowe zdjęcie</label>
                     <input type="file" name="imageFile" class="form-control" accept="image/*" />
                 </div>
+
                 <div class="col-12 d-flex gap-2">
                     <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
                     <a asp-action="Dashboard" class="btn btn-outline-secondary">Anuluj</a>
                 </div>
+
             </div>
         </form>
     </div>

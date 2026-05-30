@@ -125,7 +125,7 @@ namespace Lotomoto.Controllers
             existing.Mileage = model.Mileage;
             existing.Year = model.Year;
             existing.Category = model.Category;
-            existing.Version = model.Version;
+            existing.Power = model.Power;
             existing.Description = model.Description;
 
             _context.CarListings.Update(existing);
