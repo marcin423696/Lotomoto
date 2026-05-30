@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lotomoto.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260523191105_InitialCreate")]
+    [Migration("20260530130808_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -47,14 +47,13 @@ namespace Lotomoto.Migrations
                     b.Property<int>("Mileage")
                         .HasColumnType("int");
 
+                    b.Property<int>("Power")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Version")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
