@@ -1,6 +1,14 @@
 
 # Dokumentacja techniczna aplikacji Lotomoto
 
+## 0. Instrukcja 
+Dokładne działanie każdego panelu jest dostępne w pliku : Dokumentacja-użytkownika-aplikacji-Lotomoto.docx
+Aby uruchomić projekt należy:
+1. Pobierz repozytorium na dysk jako ZIP
+2. Wypakuj repozytorium
+3. Otwórz plik rozwiązania Lotomoto.sln w programie Visual Studio.
+4. Wpisz w terminalu polecenie dotnet run oraz skopiuj wygenerowanego przez aplikacje localhost - np. http://localhost:5168 i wpisz w przeglądarke 
+
 ## 1. Opis projektu
 Lotomoto to nowoczesna aplikacja internetowa służąca do przeglądania i zarządzania ogłoszeniami samochodowymi. Projekt został przygotowany w technologii ASP.NET Core MVC i działa w formie portalu ogłoszeniowego zbliżonego do wiodących serwisów motoryzacyjnych.
 
@@ -59,10 +67,8 @@ Formularz dodawania ogłoszenia został wyciągnięty do strefy publicznej, umo�
 
 Formularz edycji (zabezpieczony i dostępny dla administratora) pozwala na sprawną korektę błędów w parametrach technicznych lub aktualizację opisu i ceny.
 
-## 9. Obsługa plików medialnych
-Zdjęcia przesyłane przez formularz trafiają do katalogu `wwwroot/uploads`. System automatycznie nadaje każdemu plikowi unikalną, losową nazwę w celu uniknięcia nadpisania plików o takich samych nazwach źródłowych. W bazie danych przechowywany jest wyłącznie tekstowy ciąg reprezentujący relatywną ścieżkę do pliku, co optymalizuje wydajność bazy. W przypadku braku zdjęcia, aplikacja automatycznie podstawia obraz zastępczy (placeholder).
 
-## 10. Widoki i interfejs użytkownika
+## 9. Widoki i interfejs użytkownika
 Warstwa wizualna została zbudowana przy użyciu silnika Razor Views oraz frameworka Bootstrap. Interfejs aplikacji jest w pełni responsywny (RWD), co zapewnia komfortowe przeglądanie ofert zarówno na komputerach stacjonarnych, jak i na urządzeniach mobilnych. Do najważniejszych widoków należą:
 * Strona główna z prezentacją platformy
 * Publiczna lista ogłoszeń z panelem filtrów
@@ -70,18 +76,17 @@ Warstwa wizualna została zbudowana przy użyciu silnika Razor Views oraz framew
 * Formularze dodawania oraz edycji
 * Ekran logowania administratora
 
-## 11. Filtrowanie ogłoszeń
+## 10. Filtrowanie ogłoszeń
 Wyszukiwarka zaimplementowana na stronie głównej oraz liście ogłoszeń pozwala na dynamiczne zawężanie wyników. Użytkownik może filtrować bazę pojazdów m.in. po:
 * Słowach kluczowych (fraza w tytule/opisie)
 * Kategorii pojazdu
 * Przedziale cenowym
 * Roku produkcji
 
-## 12. Bezpieczeństwo
+## 11. Bezpieczeństwo
 Aplikacja wdraża podstawowe standardy bezpieczeństwa dla systemów webowych:
 * **Autentykacja i Autoryzacja:** Dostęp do metod modyfikujących bazę danych (`HttpPost`) oraz do samego panelu zarządzania jest chroniony i wymaga zalogowania.
 * **Ochrona przed CSRF:** Wszystkie formularze generują i weryfikują tokeny przeciwko nieautoryzowanemu wysyłaniu żądań (`[ValidateAntiForgeryToken]`).
 * **Bezpieczne wylogowanie:** Akcja wylogowania została oparta o bezpieczną metodę `POST`, uniemożliwiającą przypadkowe wylogowanie przez zapytanie typu `GET`.
 
-## 13. Instrukcja uruchomienia projektu
-Aby poprawnie pobrać, zaktualizować i uruchomić projekt lokalnie, wykonaj poniższe kroki
+
