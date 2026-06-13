@@ -3,3 +3,6 @@ obj/
 *.db
 .DS_Store
 .vs/
+wwwroot/uploads/*
+!wwwroot/uploads/bmw.jpg
+!wwwroot/uploads/szkoda.jpg
