@@ -67,7 +67,7 @@ namespace Lotomoto.Controllers
         }
 
         // Pozwalamy anonimowym użytkownikom dodawać ogłoszenia
-        [AllowAnonymous]
+        [Authorize]
         public IActionResult Create()
         {
             return View(new CarListing());

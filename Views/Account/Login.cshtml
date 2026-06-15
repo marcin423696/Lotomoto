@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Logowanie";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>Logowanie do Lotomoto</h4>
+                </div>
+                <div class="card-body">
+                    
+                    @* To miejsce wyœwietli ewentualne b³êdy, np. "Z³e has³o" *@
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger">
+                            <div asp-validation-summary="All" class="text-danger mb-0"></div>
+                        </div>
+                    }
+
+                    <form asp-controller="Account" asp-action="Login" method="post">
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Adres E-mail</label>
+                            <input type="email" id="email" name="email" class="form-control" required placeholder="Wpisz e-mail" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Has³o</label>
+                            <input type="password" id="password" name="password" class="form-control" required placeholder="Wpisz has³o" />
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">Zaloguj siê</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    Nie masz konta? <a asp-controller="Account" asp-action="Register">Zarejestruj siê</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

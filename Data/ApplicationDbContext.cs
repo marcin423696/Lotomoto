@@ -10,5 +10,6 @@ namespace Lotomoto.Data
         }
 
         public DbSet<CarListing> CarListings { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

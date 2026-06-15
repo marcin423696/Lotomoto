@@ -1,0 +1,50 @@
+@model Lotomoto.Models.User
+
+@{
+    ViewData["Title"] = "Rejestracja";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white text-center">
+                    <h4>Za³ó¿ nowe konto</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Account" asp-action="Register" method="post">
+                        
+                        <div class="mb-3">
+                            <label asp-for="FirstName" class="form-label">Imiê</label>
+                            <input asp-for="FirstName" class="form-control" placeholder="Wpisz swoje imiê" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label">Adres E-mail</label>
+                            <input asp-for="Email" type="email" class="form-control" placeholder="jan@kowalski.pl" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label">Has³o</label>
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Minimum 6 znaków" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-success btn-lg">Zarejestruj siê</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    Masz ju¿ konto? <a asp-controller="Account" asp-action="Login">Zaloguj siê tutaj</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

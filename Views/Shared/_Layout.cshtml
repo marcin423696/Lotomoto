@@ -29,24 +29,36 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
+                    
                     <ul class="navbar-nav">
                         @if (User.Identity?.IsAuthenticated == true)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark align-middle" asp-area="" asp-controller="Admin" asp-action="Dashboard" style="line-height: 2.39;">Panel admina</a>
+                                <span class="nav-link text-dark align-middle" style="line-height: 2.39;">Witaj, @User.Identity.Name!</span>
                             </li>
+                            
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-danger fw-bold align-middle" asp-area="" asp-controller="Admin" asp-action="Dashboard" style="line-height: 2.39;">Panel admina</a>
+                                </li>
+                            }
+                            
                             <li class="nav-item">
-                                <a class="nav-link text-dark align-middle" asp-area="" asp-controller="Admin" asp-action="Logout" style="line-height: 2.39;">Wyloguj (@User.Identity.Name)</a>
+                                <a class="nav-link text-dark align-middle" asp-area="" asp-controller="Account" asp-action="Logout" style="line-height: 2.39;">Wyloguj</a>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Login">Zaloguj</a>
+                                <a class="nav-link text-dark align-middle" asp-area="" asp-controller="Account" asp-action="Login" style="line-height: 2.39;">Zaloguj</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white btn btn-success btn-sm ms-2 mt-2" asp-area="" asp-controller="Account" asp-action="Register">Rejestracja</a>
                             </li>
                         }
                     </ul>
-                </div>
+                    </div>
             </div>
         </nav>
     </header>
